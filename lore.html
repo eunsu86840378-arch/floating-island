@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>백귀정 & 부유섬 통합 위키</title>
+    <style>
+        :root { --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; --accent: #38bdf8; --border: #334155; --subtext: #94a3b8; }
+        body { font-family: 'Malgun Gothic', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 1000px; }
+        header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 20px; }
+        h1 { color: var(--accent); margin-bottom: 5px; }
+        .nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; position: sticky; top: 10px; background: rgba(15, 23, 42, 0.9); padding: 10px; border-radius: 8px; z-index: 100; backdrop-filter: blur(5px); border: 1px solid var(--border); }
+        .nav a { background: var(--card-bg); color: var(--accent); padding: 8px 16px; border-radius: 6px; text-decoration: none; border: 1px solid var(--border); transition: 0.2s; font-size: 14px; }
+        .nav a:hover { background: var(--accent); color: var(--bg); }
+        section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        h2 { border-bottom: 1px solid var(--border); padding-bottom: 8px; color: var(--accent); margin-top: 0; }
+        ul { line-height: 1.6; }
+        li strong { color: #f472b6; }
+
+        /* System Card Subgrid */
+        .system-box { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .system-title { font-size: 16px; font-weight: bold; color: #f472b6; margin-bottom: 8px; }
+        .system-desc { font-size: 13px; color: var(--subtext); line-height: 1.5; }
+
+        /* Island Grid */
+        .island-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .island-card { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+        .island-img { width: 100%; height: 140px; background: #2e3a4e; object-fit: cover; }
+        .island-body { padding: 12px; }
+        .island-title { font-size: 16px; font-weight: bold; color: var(--accent); margin-bottom: 5px; }
+        .island-desc { font-size: 12px; color: var(--subtext); line-height: 1.4; }
+
+        /* Spoiler Box */
+        details { background: #0f172a; border: 1px dashed #f472b6; padding: 12px; border-radius: 8px; margin-top: 15px; }
+        summary { cursor: pointer; color: #f472b6; font-weight: bold; font-size: 14px; outline: none; }
+        .spoiler-content { margin-top: 10px; font-size: 13px; color: var(--subtext); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 8px; }
+
+        /* Character Grid */
+        .char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 15px; }
+        .char-card { background: #0f172a; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; }
+        .char-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+        .char-img-wrap { width: 100%; height: 200px; background: #2e3a4e; overflow: hidden; }
+        .char-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .char-info { padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
+        .char-name { font-size: 18px; font-weight: bold; color: #f472b6; margin-bottom: 4px; }
+        .char-meta { font-size: 12px; color: var(--subtext); margin-bottom: 8px; }
+        .char-desc { font-size: 13px; line-height: 1.4; color: var(--text); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📜 부유섬 통합 세계관 & 등장인물 위키</h1>
+            <p>부유섬 상세 정보, 스펠카드 이능력 체계 및 등장인물 도감 아카이브</p>
+        </header>
+
+        <div class="nav">
+            <a href="#overview">세계관 개요</a>
+            <a href="#islands">부유섬 도감</a>
+            <a href="#system">스펠카드 & 잔기</a>
+            <a href="#ghost">유령 & 빙의</a>
+            <a href="#characters">등장인물 도감</a>
+        </div>
+
+        <section id="overview">
+            <h2>🌍 세계관 개요</h2>
+            <p>500년 전 인류가 지하서 무한에너지 부유석을 발견했으나 남용으로 지상이 오염되어, 부유석을 개조해 섬을 띄워 하늘로 도피한 세계(창공력 500년). 부유석 파장 안쪽(섬 영토+연결다리)만 안전하며, 섬마다 고유한 생태계와 문화가 발달했습니다.</p>
+        </section>
+
+        <!-- 부유섬 상세 도감 -->
+        <section id="islands">
+            <h2>🏝️ 부유섬 상세 도감</h2>
+            <p style="font-size: 13px; color: var(--subtext); margin-bottom: 15px;">포트로 연결되어 서로 왕래가 가능한 4대 주요 부유섬입니다.</p>
+            <div class="island-grid">
+                <div class="island-card">
+                    <img src="https://itimg.kr/5391/PSS/MAP/1.webp" alt="신성제국" class="island-img">
+                    <div class="island-body">
+                        <div class="island-title">루미너스 신성제국</div>
+                        <div class="island-desc">인간우월주의 왕정국가. 1회용 카드를 영혼 조각으로 여겨 유통을 엄금하나, 뒷선에서는 귀족들이 몰래 유용합니다.</div>
+                    </div>
+                </div>
+                <div class="island-card">
+                    <img src="https://itimg.kr/5391/PSS/MAP/2.webp" alt="마족군국" class="island-img">
+                    <div class="island-body">
+                        <div class="island-title">판데모니움 군국</div>
+                        <div class="island-desc">마왕 1인 독재의 마족 국가. 상실자에게도 갑옷을 입혀 병사로 대우하는 철저한 실력주의 체제입니다.</div>
+                    </div>
+                </div>
+                <div class="island-card">
+                    <img src="https://itimg.kr/5391/PSS/MAP/3.webp" alt="세피로트" class="island-img">
+                    <div class="island-body">
+                        <div class="island-title">세피로트 성국</div>
+                        <div class="island-desc">세계수를 모시는 엘프 중심의 종교국가. 자연마법이 발달했으며 타종족에게 교단 가입을 적극 권유합니다.</div>
+                    </div>
+                </div>
+                <div class="island-card">
+                    <img src="https://itimg.kr/5391/PSS/MAP/4.webp" alt="백귀정" class="island-img">
+                    <div class="island-body">
+                        <div class="island-title">백귀정 (현재 무대)</div>
+                        <div class="island-desc">인간과 요괴가 공존하는 무법지대 야시장. 환술과 봉인이 발달했으며, 이곳에서 죽으면 유령이 됩니다.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 스펠카드 및 전투 시스템 상세 -->
+        <section id="system">
+            <h2>⚙️ 스펠카드 및 전투 체계</h2>
+            <p style="font-size: 13px; color: var(--subtext); margin-bottom: 15px;">부유섬 세계관에서 인간의 힘과 생명을 좌우하는 핵심 이능력 시스템입니다.</p>
+            
+            <div class="system-box">
+                <div class="system-title">🃏 1. 스펠카드 (고유 이능력)</div>
+                <div class="system-desc">
+                    개개인의 개성, 전투 스타일, 영혼의 성향이 물리적 형태로 응축된 <strong>'단 하나의 고유 능력'</strong>입니다. 모든 인간은 태생적으로 자신만의 스펠카드 1장을 품고 살아가며, 이를 전개해 마법, 신체 강화, 특수 현상 등 각양각색의 이능력을 발휘합니다.
+                </div>
+            </div>
+
+            <div class="system-box">
+                <div class="system-title">✨ 2. 일회용 스펠카드 (소모성 이능력)</div>
+                <div class="system-desc">
+                    고유 본체 카드와 달리, 특정 남들을 통해 승리한다면 생기는 <strong>단 한 번 사용하고 소멸하는 강화/특수 카드</strong>입니다. 남들의 능력을 사용할수있지만 1회용입니다. 자신의 고유 능력과 남들의 능력을 사용해 강력한 전투력을 발휘할수있습니다.
+                </div>
+            </div>
+
+            <div class="system-box">
+                <div class="system-title">❤️ 3. 잔기 (Lives)와 '상실자'</div>
+                <div class="system-desc">
+                    인간의 생명력과 영혼의 강인함을 수치화한 <strong>'목숨/기회'</strong> 개념입니다. (모든 인간은 기본적으로 **잔기 3개**를 소유)<br>
+                    • <strong>잔기 차감:</strong> 남들에게 치명적인 부상을 입거나 결투에서 패배할 때마다 1개씩 깎입니다.<br>
+                    • <strong>상실자 전락:</strong> 잔기 3개가 모두 소모되어 0이 되면, 영혼의 코어가 망가져 더 이상 자신의 고유 스펠카드를 쓸 수 없게 됩니다. 이렇게 능력을 잃은 이들을 '상실자'라 부르며, 신성제국 같은 곳에서는 이들을 노예로 부립니다.
+                </div>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <ul>
+                    <li><strong>도킹 시스템:</strong> 동서남북 4개 포트로 다리를 사출해 섬과 섬을 연결하는 이동 수단 (합의 도킹 / 강제 도킹 존재).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="ghost">
+            <h2>👻 유령 및 빙의 시스템</h2>
+            <ul>
+                <li><strong>침식도 (0~100%):</strong> 유령이 몸을 장악한 비율. 수치가 높을수록 본래 주인처럼 완벽하게 연기 가능.</li>
+            </ul>
+
+            <!-- 스포일러 영역 -->
+            <details>
+                <summary>스포일러 ⚠️ (이번 빙의 이변의 원인)</summary>
+                <div class="spoiler-content">
+                    <strong>혼갑이란?</strong><br>
+                    퍼시발이 판데모니움 군국에서 훔쳐 백귀정에서 팔아넘긴 정체불명의 차가운 네모상자 유물.<br>
+                    이 상자가 섬 전체로 뿜어내는 특수한 파장 때문에, 원래 빙의가 불가능했던 유령들의<strong>'빙의능력'</strong>이 폭발적으로 강해지면서 현재 백귀정과 주변 섬들에 거대한 이변을 일으키고 있습니다.
+                </div>
+            </details>
+        </section>
+
+        <section id="characters">
+            <h2>👥 등장인물 도감</h2>
+            <div class="char-grid">
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/SLN/2.webp" alt="셀레네"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">셀레네</div>
+                            <div class="char-meta">엘프 | 150살 | 대사제장</div>
+                            <div class="char-desc">세계수를 직접 모시는 엄격한 꼰대. 논리에 약하며 과몰입형 소녀감성.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/STL/2.webp" alt="스텔레"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">스텔레</div>
+                            <div class="char-meta">엘프 | 60살 | 경비대장</div>
+                            <div class="char-desc">메스가키 성향. 타종족을 허접 취급하며 엉덩이에 유도화살을 쏘는 취미가 있음.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/SLV/2.webp" alt="실비아"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">실비아</div>
+                            <div class="char-meta">엘프 | 140살 | 수녀</div>
+                            <div class="char-desc">자애로운 밀프 스타일의 근접전 최강자. 격노해도 표정 변화 없이 행동함.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/YHE/2.webp" alt="요희"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">요희</div>
+                            <div class="char-meta">흰고양이요괴 | 90살 | 신사무녀</div>
+                            <div class="char-desc">귀찮은 것을 싫어하는 변덕쟁이 신사 주인. 늙은이 말투를 씀.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/MIH/2.webp" alt="미호"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">미호</div>
+                            <div class="char-meta">흰여우수인 | 22살 | 무소속</div>
+                            <div class="char-desc">겉은 무심하나 마음에 든 상대에겐 강한 소유욕을 보이는 무뚝뚝한 수인.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/SHT/2.webp" alt="슈텐"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">슈텐</div>
+                            <div class="char-meta">오니 | 92살 | 전 오니우두머리</div>
+                            <div class="char-desc">털털하고 호탕한 근육질 오니. 강자를 좋아하며 귀여운 남자를 심각하게 좋아함.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/TKN/2.webp" alt="타카네"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">타카네</div>
+                            <div class="char-meta">유령 | 22살 | 무소속</div>
+                            <div class="char-desc">향락적이고 돈을 물 쓰듯 쓰는 유령. 부유해 보이는 상대를 오만하게 약탈함.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/HRN/2.webp" alt="히루네"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">히루네</div>
+                            <div class="char-meta">유령 | 24살 | 무소속</div>
+                            <div class="char-desc">타력본원적이고 낙천적인 유령. 상시 주변 행운을 불운으로 바꿈.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/SPR/2.webp" alt="샤피라"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">샤피라</div>
+                            <div class="char-meta">마족 | 26살 | 제1군단장</div>
+                            <div class="char-desc">호탕하고 시원시원한 누님어투의 마족. 사디스트 성향이 있어 선을 넘으면 응징함.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/ELN/2.webp" alt="엘레노어"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">엘레노어</div>
+                            <div class="char-meta">인간 | 26살 | 제국기사단장</div>
+                            <div class="char-desc">각 잡힌 군인 말투 뒤에 심한 노출증과 마조히스트 기질을 숨긴 기사단장.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/PSB/2.webp" alt="퍼시발"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">퍼시발</div>
+                            <div class="char-meta">인간 | 20살 | 범죄자</div>
+                            <div class="char-desc">오타쿠 말투를 쓰는 제국 귀족 출신 범죄자. 혼갑을 유통시킨 장본인.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/YAG/2.webp" alt="야강"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">야강</div>
+                            <div class="char-meta">인간 | 22살 | 츠키요미가문 당주</div>
+                            <div class="char-desc">약한 척 남을 이용해 먹는 상급 퇴마사. 속으로는 자기 외모에 심취해 있음.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="char-card">
+                    <div class="char-img-wrap"><img src="https://itimg.kr/5391/PSS/HWI/2.webp" alt="황휘"></div>
+                    <div class="char-info">
+                        <div>
+                            <div class="char-name">황휘</div>
+                            <div class="char-meta">인간 | 22살 | 금오문 소당주</div>
+                            <div class="char-desc">껄렁하고 오만한 금오문 소당주. 현재는 성별 불문 진실된 사랑을 찾는 중.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
